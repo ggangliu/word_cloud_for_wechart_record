@@ -14,6 +14,7 @@ Generates a word cloud image from a text file and a mask picture.
 
 3. Inform the following files paths as requested:
     - Text file; 
+    
     - 中英文文本文件，例如简历  
     
     - Mask picture(optional);  
