@@ -2,14 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ab352fe7-798a-40b0-a791-7c37294a15ae" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/word_cloud_for_wechart_record.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/config/sample_text.txt" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wordcloud.png" afterPath="$PROJECT_DIR$/wordcloud.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/1.txt" afterPath="$PROJECT_DIR$/1.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.ini" afterPath="$PROJECT_DIR$/config.ini" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/sample_text_ch.txt" afterPath="$PROJECT_DIR$/config/sample_text_ch.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/sample_text_en.txt" afterPath="$PROJECT_DIR$/config/sample_text_en.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/generate_wordcloud.py" afterPath="$PROJECT_DIR$/generate_wordcloud.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,11 +28,9 @@
       <file leaf-file-name="generate_wordcloud.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/generate_wordcloud.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
-              <caret line="49" column="43" lean-forward="true" selection-start-line="49" selection-start-column="43" selection-end-line="49" selection-end-column="43" />
-              <folding>
-                <element signature="e#65#83#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="153">
+              <caret line="9" column="44" lean-forward="true" selection-start-line="9" selection-start-column="44" selection-end-line="9" selection-end-column="44" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -465,11 +461,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/generate_wordcloud.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="49" column="43" lean-forward="true" selection-start-line="49" selection-start-column="43" selection-end-line="49" selection-end-column="43" />
-          <folding>
-            <element signature="e#65#83#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="153">
+          <caret line="9" column="44" lean-forward="true" selection-start-line="9" selection-start-column="44" selection-end-line="9" selection-end-column="44" />
+          <folding />
         </state>
       </provider>
     </entry>
