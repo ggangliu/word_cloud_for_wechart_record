@@ -1,17 +1,34 @@
 # -*- coding: utf-8 -*-
 
-#导入wordcloud模块和matplotlib模块
+#export wordcloud and matplotlib module
 import numpy as np
 import matplotlib.pyplot as plt
 import os
 import sys
 from PIL import Image
 from wordcloud import WordCloud
+import ConfigParser
 
+def get_config_from_file(config_file='./config/config.ini'):
+    #Get config information from config_file, default it included in ./config/config.ini
+    cf = ConfigParser.ConfigParser()
+    cf.read(config_file)
+    words_file = cf.get("base_config", "words_file")
+    mask_pic   = cf.get("base_config", "mask_pic")
+    bg_pic     = cf.get("base_config", "bg_pic")
+    font_file  = None
 
-def generate_wordcloud(words_file, mask_pic, bg_pic=None, font_file=None):
-    #读取一个txt文件
+    if "window_config" in cf.sections():
+        #font_file =  cf.get("window_config", "font_file") #This line can't be to works, how to give a windows path to font_file, like as r'C:\Windows\Fonts\COOPBL.TTF'
+        font_file = r'C:\Windows\Fonts\COOPBL.TTF' #This line is temporary, can be delete if above line can be work
+
+    return words_file, mask_pic, bg_pic, font_file
+
+def generate_wordcloud(words_file, mask_pic, bg_pic=None, font_file=r'C:\Windows\Fonts\COOPBL.TTF'):
+    #Read a txt file
     # Context managers automatically close the file after all operations finished
+    print "%s, %s, %s, %s" % (words_file, mask_pic, bg_pic, font_file)
+
     with open(words_file, 'r') as f:
         text = f.read()
 
@@ -26,16 +43,17 @@ def generate_wordcloud(words_file, mask_pic, bg_pic=None, font_file=None):
         wordcloud = WordCloud(mask=mask_pic, background_color=None, scale=1.5, mode='RGBA', font_path=font_file).generate_from_text(text)
 
     #显示词云图片
-    plt.imshow(wordcloud)
-    plt.axis('off')
-    plt.show()
+    if None == bg_pic:
+        plt.imshow(wordcloud)
+        plt.axis('off')
+        plt.show()
 
     #保存图片
     # Using .png to support transparency
-    wordcloud.to_file('foreground.png')
+    wordcloud.to_file('wordcloud.png')
 
     if bg_pic:
-        foreground = Image.open('foreground.png')
+        foreground = Image.open('wordcloud.png')
         background = Image.open(bg_pic)
 
         width, height = foreground.size
@@ -43,29 +61,9 @@ def generate_wordcloud(words_file, mask_pic, bg_pic=None, font_file=None):
 
         background.paste(foreground, (0,0), foreground)
         background.show()
-
         background.save('wordcloud.png')
 
 
 if __name__ == '__main__':
-    words_file = raw_input('File to read text from: ')
-    if not os.path.isfile(words_file):
-        print 'Error: Text file does not exists (%s)' % words_file
-        sys.exit(1)
-
-    mask_pic = raw_input('Mask picture path: ')
-    if not os.path.isfile(mask_pic):
-        print 'Error: Mask file does not exists (%s)' % mask_pic
-        sys.exit(1)
-
-    bg_pic = raw_input('Background picture path (optional): ')
-    if bg_pic and not os.path.isfile(bg_pic):
-        print 'Error: Background file does not exists (%s)' % bg_pic
-        sys.exit(1)
-
-    font_file = raw_input('Custom font path (optional for Linux): ')
-    if font_file and not os.path.isfile(font_file):
-        print 'Error: Font file does not exists (%s)' % font_file
-        sys.exit(1)
-
+    words_file, mask_pic, bg_pic, font_file = get_config_from_file("./config/config.ini")
     generate_wordcloud(words_file, mask_pic, bg_pic, font_file)
