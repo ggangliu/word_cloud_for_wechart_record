@@ -42,3 +42,48 @@ Next, look at the conversations in both open and closed issues and pull requests
 Some maintainers make sure new contributors feel welcome and appreciated with friendly messages or emojis.
 
 Take time to read through old issues or mailing list archives, lurk on their Slack or IRC channel if they have one, and gather information about how the project works. Get a good feel for the project’s community and whether you’ll enjoy spending time with the people involved.
+最近在windows系统上用python做自动化打包的脚本，遇到了文件路径的问题，在这里扒拉了一些资料，总算是搞清楚，分享给大家
+
+
+
+
+
+
+问题的根本：windows读取文件可以用\，但在字符串里面\被作为转义字符使用，
+ 那么python在描述路径时有两种方式：
+'d:\\a.txt'，转义的方式
+r'd:\a.txt'，声明字符串不需要转义
+
+ 这样就实现了python在windows系统中用\来访问，其实这样比较麻烦的是不是，下面对几种情况说明：
+
+
+
+
+问题1：其实python中文件的绝对路径可以直接复制window的路径，
+ 如：
+
+
+C:\Users\Administrator\Desktop\python\source.txt  这个路径是没有问题的
+
+
+
+
+但是，其实你的绝对路径正确，但是执行报错，那么就是你文件名的问题，如：
+
+
+C:\Users\Administrator\Desktop\python\t1.txt  这个路径绝对会报错，因为 \t被转义了
+
+python就会解析为C:\Users\Administrator\Desktop\python 1.txt  这个时候肯定会报错的
+
+
+
+
+若果你改成下面的写法就不会报错啦（推荐使用此写法“/"，可以避免很多异常）
+
+
+C:/Users/Administrator/Desktop/python/t1.txt  
+
+
+
+
+其实还有很多种写法，大家尝试一下的吧，哈哈
