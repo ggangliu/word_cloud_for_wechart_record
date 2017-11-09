@@ -40,7 +40,7 @@ def generate_wordcloud(words_file, mask_pic=None, bg_pic=None, font_file=r'C:\Wi
     # Mode RGBA and background color None makes the background transparent, that way we can paste the resulting image
     # into another one, which will be the background
     else:
-        wordcloud = WordCloud(max_words=100,width = 1200,height=800, mode='RGBA', background_color=None, font_path=font_file).generate(word_split)
+        wordcloud = WordCloud(max_words=200,width = 1200,height=800, mode='RGBA', background_color=None, font_path=font_file).generate(word_split)
     
 
     # 保存图片
