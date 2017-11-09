@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-#export wordcloud and matplotlib module
+#import wordcloud and matplotlib module
 import numpy as np
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 import os
 import sys
 from PIL import Image
@@ -19,8 +19,7 @@ def get_config_from_file(config_file='./config/config.ini'):
     font_file  = None
 
     if "window_config" in cf.sections():
-        #font_file =  cf.get("window_config", "font_file") #This line can't be to works, how to give a windows path to font_file, like as r'C:\Windows\Fonts\COOPBL.TTF'
-        font_file = r'C:\Windows\Fonts\COOPBL.TTF' #This line is temporary, can be delete if above line can be work
+        font_file =  cf.get("window_config", "font_file")
 
     return words_file, mask_pic, bg_pic, font_file
 
@@ -42,15 +41,13 @@ def generate_wordcloud(words_file, mask_pic, bg_pic=None, font_file=r'C:\Windows
     else:
         wordcloud = WordCloud(mask=mask_pic, background_color=None, scale=1.5, mode='RGBA', font_path=font_file).generate_from_text(text)
 
-    #显示词云图片
-    if None == bg_pic:
-        plt.imshow(wordcloud)
-        plt.axis('off')
-        plt.show()
-
-    #保存图片
+    # 保存图片
     # Using .png to support transparency
     wordcloud.to_file('wordcloud.png')
+
+    #显示词云图片
+    if None == bg_pic:
+        Image.open('wordcloud.png').show()
 
     if bg_pic:
         foreground = Image.open('wordcloud.png')
