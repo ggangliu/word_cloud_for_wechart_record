@@ -7,7 +7,7 @@ import os
 import sys
 import jieba
 from PIL import Image
-from wordcloud import WordCloud
+from wordcloud import WordCloud, STOPWORDS
 import ConfigParser
 
 def get_config_from_file(config_file='config.ini'):
@@ -35,12 +35,12 @@ def generate_wordcloud(words_file, mask_pic=None, bg_pic=None, font_file=r'C:\Wi
     if mask_pic:
         #读入背景图片
         mask_pic = np.array(Image.open(mask_pic))
-        wordcloud = WordCloud(mask=mask_pic, background_color=None, scale=1.5, mode='RGBA', font_path=font_file).generate(word_split)
+        wordcloud = WordCloud(mask=mask_pic, background_color=None, scale=1.5, mode='RGBA', stopwords=STOPWORDS, font_path=font_file).generate(word_split)
         
     # Mode RGBA and background color None makes the background transparent, that way we can paste the resulting image
     # into another one, which will be the background
     else:
-        wordcloud = WordCloud(max_words=200,width = 1200,height=800, mode='RGBA', background_color=None, font_path=font_file).generate(word_split)
+        wordcloud = WordCloud(max_words=200,width = 1200,height=800, mode='RGBA', background_color=None, stopwords=STOPWORDS, font_path=font_file).generate(word_split)
     
 
     # 保存图片
