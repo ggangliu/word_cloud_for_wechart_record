@@ -15,7 +15,8 @@ Generates a word cloud image from a text file and a mask picture.
     - `Background picture (optional)`
     - `Font path (Required only on Windows)` 
 
-4. Run `python convert_to_exe.py`, can be create an exe file called `generate_wordcloud.exe`, and it will be saved to the `dist` direct ory.
+4. Run `python convert_to_exe.py`, can be create an exe file called `generate_wordcloud.exe`, 
+   and it will be saved to the `dist` direct ory.
 ```
 
 The output file will be saved to the same directory as the script and will be called `wordcloud.png`.
